@@ -12,8 +12,7 @@ class TableScore @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ):ConstraintLayout(context, attrs, defStyleAttr){
 
-    private var currentFrame:Int = 1
-    private lateinit var frames:HashMap<Int, Frame>
+    private var frames:HashMap<Int, Frame>
 
     init {
         LayoutInflater.from(context).inflate(R.layout.table_score,this, true)
@@ -37,15 +36,13 @@ class TableScore @JvmOverloads constructor(
         frames.put(10, frame_10)
 
         for (i in 1..10){
-            frames[i]?.setData(i.toString())
+            frames[i]?.setTitle(i.toString())
         }
     }
 
     fun setData(numFrame:Int, numThrow:Int, score:Int){
-        when(numThrow){
-            1 -> frames[numFrame]?.setData("",score.toString(),"","","")
-            2 -> frames[numFrame]?.setData("","",score.toString(),"","")
-        }
-
+        frames[numFrame]?.setThrow(numThrow, score)
     }
+
+
 }

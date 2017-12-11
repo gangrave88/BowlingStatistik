@@ -16,10 +16,18 @@ class Frame_1_9 @JvmOverloads constructor(
         LayoutInflater.from(context).inflate(R.layout.frame_1_9,this, true)
     }
 
-    override fun setData(mTitle:String, mThrow1:String, mThrow2:String, mThrow3:String , mScore:String){
+    override fun setScore(scoreFrame: Int) {
+        if (scoreFrame.toString() !== "") score.text = scoreFrame.toString()
+    }
+
+    override fun setThrow(numThrow: Int, scoreThrow: Int) {
+        when (numThrow) {
+            1 -> throw1.text = throwToString(scoreThrow)
+            2 -> throw2.text = throwToString(scoreThrow)
+        }
+    }
+
+    override fun setTitle(mTitle: String) {
         if (mTitle !== "") title.text = mTitle
-        if (mThrow1 !== "") throw1.text = mThrow1
-        if (mThrow2 !== "") throw2.text = mThrow2
-        if (mScore !== "") score.text = mScore
     }
 }
